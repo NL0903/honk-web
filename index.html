@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <title>Honk!</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+
+  <!-- Local Auth (device-only “profile”) -->
+
+  <section id="auth" class="screen">
+
+    <h1 class="logo">Honk!</h1>
+
+    <input id="display-name" class="input" placeholder="Enter a name" />
+
+    <button id="enter-app" class="btn primary">Enter</button>
+
+    <p class="msg">Local-only profile (stored on this device).</p>
+
+  </section>
+
+
+
+  <!-- Main / Camera -->
+
+  <section id="main" class="screen hidden">
+
+    <video id="preview" autoplay playsinline></video>
+
+
+
+    <!-- shutter -->
+
+    <div class="shutter-wrap">
+
+      <button id="shutter" class="shutter"></button>
+
+    </div>
+
+
+
+    <!-- translucent tabs -->
+
+    <div class="tabs">
+
+      <button id="open-scores" class="pill">Scores</button>
+
+      <button id="open-settings" class="pill">Settings</button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Confirm modal -->
+
+  <div id="confirm-backdrop" class="backdrop hidden">
+
+    <div class="card">
+
+      <h2>Confirm Plate</h2>
+
+      <input id="plate-input" class="input plate" placeholder="e.g. ABC1234" />
+
+      <div class="vote-row">
+
+        <button id="vote-plus" class="vote plus">+</button>
+
+        <button id="vote-minus" class="vote minus">−</button>
+
+      </div>
+
+      <button id="cancel-confirm" class="btn">Cancel</button>
+
+      <p id="confirm-msg" class="msg"></p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Scores modal -->
+
+  <div id="scores-backdrop" class="backdrop hidden">
+
+    <div class="card tall">
+
+      <h2>High Scores</h2>
+
+      <h3>Best Drivers (score &gt; 0)</h3>
+
+      <ul id="best-list" class="list"></ul>
+
+      <h3>Worst Drivers (score &lt; 0)</h3>
+
+      <ul id="worst-list" class="list"></ul>
+
+      <button id="close-scores" class="btn primary">Close</button>
+
+      <p id="scores-msg" class="msg"></p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Settings modal -->
+
+  <div id="settings-backdrop" class="backdrop hidden">
+
+    <div class="card">
+
+      <h2>Settings</h2>
+
+      <p class="muted" id="whoami"></p>
+
+      <button id="sign-out-local" class="btn">Sign out (local)</button>
+
+      <button id="reset-db" class="btn danger">Reset local database</button>
+
+      <button id="close-settings" class="btn primary">Close</button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- SQLite WASM + IndexedDB helper (no npm) -->
+
+  <script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/umd.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.10.2/dist/sql-wasm.js"></script>
+
+  <script type="module" src="app.js"></script>
+
+</body>
+
+</html>
